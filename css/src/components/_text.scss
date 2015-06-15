@@ -1,0 +1,31 @@
+$colors: #fe70bd, #400023, #fababa, #930050, #fe48aa, #56002f, #fe249a;
+$max: 5;
+$stroke-step: 14%;
+
+svg { position: absolute; top: 0; right: 0; bottom: 0; left: 0; margin: auto; height: 600px;
+  font: 10em/1 'waltographUI', cursive; }
+.text--line { font-size: .7em; }
+.text-copy {
+  fill: rgba(#fe70bd, .02);
+  stroke: transparent;
+  stroke-dasharray: $stroke-step $stroke-step * ($max - 1);
+  stroke-width: 3px;
+
+  animation: stroke-offset 10s infinite ease-in-out;
+
+  @for $item from 1 through $max {
+    $stroke-color: nth($colors, $item);
+
+    &:nth-child(#{$item}) {
+      stroke: $stroke-color;
+      stroke-dashoffset: $stroke-step * $item;
+      }
+    }
+  }
+
+@keyframes stroke-offset {
+  50% {
+    stroke-dashoffset: $stroke-step * $max;
+    stroke-dasharray: 0 $stroke-step * $max*2.5;
+  }
+}

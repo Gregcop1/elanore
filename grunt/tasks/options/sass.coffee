@@ -1,0 +1,16 @@
+module.exports =
+  dev:
+    options:
+      sourceMap: true
+      style: "compact"
+      precision: 20
+      lineNumbers: true
+    files:
+      '<%= in8.cssDest %>/main.tmp.css': '<%= in8.cssSrc %>/main.scss'
+
+  build:
+    options:
+      style: "compact"
+      precision: 20
+    files:
+      '<%= in8.cssDest %>/main.tmp.css': '<%= in8.cssSrc %>/main.scss'
